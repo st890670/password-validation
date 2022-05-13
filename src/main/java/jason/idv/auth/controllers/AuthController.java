@@ -1,6 +1,6 @@
 package jason.idv.auth.controllers;
 
-import jason.idv.auth.facade.AuthFacade;
+import jason.idv.auth.facades.AuthFacade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;

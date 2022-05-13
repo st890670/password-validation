@@ -1,4 +1,4 @@
-package jason.idv.auth.facade;
+package jason.idv.auth.facades;
 
 import jason.idv.auth.components.PasswordConditionBuilder;
 import jason.idv.auth.constants.PasswordConditionCode;

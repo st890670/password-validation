@@ -1,7 +1,7 @@
-package jason.idv.auth.controller;
+package jason.idv.auth.controllers;
 
-import jason.idv.auth.controllers.AuthController;
-import jason.idv.auth.facade.AuthFacade;
+import jason.idv.auth.facades.AuthFacade;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -9,7 +9,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -32,6 +31,6 @@ public class AuthControllerMockitoTest {
     public void shouldReturnTrue(){
         when(authFacade.verifyPassword(PASSWORD)).thenReturn(true);
         boolean response = authController.verifyPassword(PASSWORD);
-        assertThat(String.valueOf(response)).isEqualTo("true");
+        Assertions.assertThat(response).isTrue();
     }
 }

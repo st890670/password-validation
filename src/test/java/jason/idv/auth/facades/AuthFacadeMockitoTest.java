@@ -1,7 +1,8 @@
-package jason.idv.auth.facade;
+package jason.idv.auth.facades;
 
 import jason.idv.auth.components.PasswordConditionBuilder;
 import jason.idv.auth.services.PasswordServiceImpl;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -9,7 +10,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Answers.RETURNS_SELF;
 import static org.mockito.Mockito.when;
 
@@ -33,7 +33,7 @@ public class AuthFacadeMockitoTest {
 
   @Test
   public void shouldReturnTrue() {
-    boolean response = authFacade.verifyPassword(PASSWORD);
-    assertThat(String.valueOf(response)).isEqualTo("true");
+    boolean result = authFacade.verifyPassword(PASSWORD);
+    Assertions.assertThat(result).isTrue();
   }
 }
