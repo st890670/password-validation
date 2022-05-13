@@ -13,12 +13,10 @@ public class AuthFacade {
   @Autowired private PasswordConditionBuilder passwordConditionBuilder;
 
   public boolean verifyPassword(String password) {
-    var conditions =
-        passwordConditionBuilder
+    return passwordService.verifyPassword(password, passwordConditionBuilder
             .add(PasswordConditionCode.SENSITIVE)
             .add(PasswordConditionCode.LENGTH)
             .add(PasswordConditionCode.DUPLICATE)
-            .build();
-    return passwordService.verifyPassword(password, conditions);
+            .build());
   }
 }
