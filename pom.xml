@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>jason.idv</groupId>
 	<artifactId>auth</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>auth</name>
 	<description>password validation project</description>
 	<properties>
@@ -34,6 +34,23 @@
 			<scope>test</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>3.0.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-boot-starter</artifactId>
+			<version>3.0.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>3.0.0</version>
+		</dependency>
 
 	</dependencies>
 
@@ -90,7 +107,6 @@
 				<reportSets>
 					<reportSet>
 						<reports>
-							<!-- select non-aggregate reports -->
 							<report>report</report>
 						</reports>
 					</reportSet>
