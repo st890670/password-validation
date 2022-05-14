@@ -1,7 +1,9 @@
 package jason.idv.auth.components;
 
-import jason.idv.auth.constants.PasswordConditionCode;
 import jason.idv.auth.entity.PasswordCondition;
+import jason.idv.auth.entity.rule.DuplicateRule;
+import jason.idv.auth.entity.rule.LengthRule;
+import jason.idv.auth.entity.rule.SensitiveRule;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -15,37 +17,38 @@ public class BuilderMockitoTest {
 
   @Test
   public void testSensitiveCondition() {
-    PasswordCondition condition =
-        builder.add(PasswordConditionCode.SENSITIVE).build();
-    boolean pass = condition.getConditions().stream().allMatch(func-> func.apply("abcd1234"));
+    PasswordCondition condition = builder.add(new SensitiveRule()).build();
+    boolean pass = condition.getConditions().stream().allMatch(rule -> rule.verify("abcd1234"));
     Assertions.assertThat(pass).isTrue();
-    boolean uppercaseFail = condition.getConditions().stream().allMatch(func-> func.apply("Abcd1234"));
+    boolean uppercaseFail =
+        condition.getConditions().stream().allMatch(rule -> rule.verify("Abcd1234"));
     Assertions.assertThat(uppercaseFail).isFalse();
-    boolean onlyLetterFail = condition.getConditions().stream().allMatch(func-> func.apply("abcd"));
+    boolean onlyLetterFail =
+        condition.getConditions().stream().allMatch(rule -> rule.verify("abcd"));
     Assertions.assertThat(onlyLetterFail).isFalse();
-    boolean onlyNumberFail = condition.getConditions().stream().allMatch(func-> func.apply("1234"));
+    boolean onlyNumberFail =
+        condition.getConditions().stream().allMatch(rule -> rule.verify("1234"));
     Assertions.assertThat(onlyNumberFail).isFalse();
   }
 
   @Test
   public void testLengthCondition() {
-    PasswordCondition condition =
-            builder.add(PasswordConditionCode.LENGTH).build();
-    boolean pass = condition.getConditions().stream().allMatch(func-> func.apply("abcd1234"));
+    PasswordCondition condition = builder.add(new LengthRule()).build();
+    boolean pass = condition.getConditions().stream().allMatch(rule -> rule.verify("abcd1234"));
     Assertions.assertThat(pass).isTrue();
-    boolean shortFail = condition.getConditions().stream().allMatch(func-> func.apply("ab12"));
+    boolean shortFail = condition.getConditions().stream().allMatch(rule -> rule.verify("ab12"));
     Assertions.assertThat(shortFail).isFalse();
-    boolean longFail = condition.getConditions().stream().allMatch(func-> func.apply("abcdefg123456"));
+    boolean longFail =
+        condition.getConditions().stream().allMatch(rule -> rule.verify("abcdefg123456"));
     Assertions.assertThat(longFail).isFalse();
   }
 
   @Test
   public void testDuplicateCondition() {
-    PasswordCondition condition =
-            builder.add(PasswordConditionCode.DUPLICATE).build();
-    boolean pass = condition.getConditions().stream().allMatch(func-> func.apply("abc123abc123"));
+    PasswordCondition condition = builder.add(new DuplicateRule()).build();
+    boolean pass = condition.getConditions().stream().allMatch(rule -> rule.verify("abc123abc123"));
     Assertions.assertThat(pass).isTrue();
-    boolean fail = condition.getConditions().stream().allMatch(func-> func.apply("aabbcc112233"));
+    boolean fail = condition.getConditions().stream().allMatch(rule -> rule.verify("aabbcc112233"));
     Assertions.assertThat(fail).isFalse();
   }
 }

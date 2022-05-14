@@ -16,12 +16,10 @@ public class PasswordServiceImplMockitoTest {
 
   @InjectMocks private PasswordServiceImpl passwordService;
 
-
-
   @Test
   public void shouldReturnTrue() {
     boolean result =
-        passwordService.verify(PASSWORD, new PasswordCondition(List.of(s -> true)));
+        passwordService.verify(PASSWORD, new PasswordCondition(List.of()));
     Assertions.assertThat(result).isTrue();
   }
 }
