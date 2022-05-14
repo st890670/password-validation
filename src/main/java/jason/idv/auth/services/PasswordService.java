@@ -1,8 +1,7 @@
 package jason.idv.auth.services;
 
-import jason.idv.auth.pojos.PasswordCondition;
+import jason.idv.auth.entity.PasswordCondition;
 
 public interface PasswordService {
-    boolean verifyPassword(String password, PasswordCondition condition);
-
+    boolean verify(String password, PasswordCondition condition);
 }

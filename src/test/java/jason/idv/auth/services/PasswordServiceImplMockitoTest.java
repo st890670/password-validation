@@ -1,6 +1,6 @@
 package jason.idv.auth.services;
 
-import jason.idv.auth.pojos.PasswordCondition;
+import jason.idv.auth.entity.PasswordCondition;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -21,7 +21,7 @@ public class PasswordServiceImplMockitoTest {
   @Test
   public void shouldReturnTrue() {
     boolean result =
-        passwordService.verifyPassword(PASSWORD, new PasswordCondition(List.of(s -> true)));
+        passwordService.verify(PASSWORD, new PasswordCondition(List.of(s -> true)));
     Assertions.assertThat(result).isTrue();
   }
 }

@@ -1,6 +1,6 @@
 package jason.idv.auth.facades;
 
-import jason.idv.auth.components.PasswordConditionBuilder;
+import jason.idv.auth.entity.PasswordCondition;
 import jason.idv.auth.services.PasswordServiceImpl;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -21,13 +21,13 @@ public class AuthFacadeMockitoTest {
   @Mock private PasswordServiceImpl passwordService;
 
   @Mock(answer = RETURNS_SELF)
-  private PasswordConditionBuilder passwordConditionBuilder;
+  private PasswordCondition.Builder passwordConditionBuilder;
 
   @InjectMocks private AuthFacade authFacade;
 
   @BeforeEach
   void setUp() {
-    when(passwordService.verifyPassword(PASSWORD, passwordConditionBuilder.build()))
+    when(passwordService.verify(PASSWORD, passwordConditionBuilder.build()))
         .thenReturn(true);
   }
 
