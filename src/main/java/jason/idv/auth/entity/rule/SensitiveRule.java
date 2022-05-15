@@ -10,6 +10,6 @@ public class SensitiveRule extends Rule {
 
   @Override
   public boolean verify(String password) {
-    return Pattern.compile("[a-z]+[0-9]+").matcher(password).matches();
+    return Pattern.compile("^(?=.+[0-9])(?=.+[a-z])[a-z0-9]+$").matcher(password).matches();
   }
 }

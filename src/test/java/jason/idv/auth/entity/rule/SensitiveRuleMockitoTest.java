@@ -14,6 +14,8 @@ public class SensitiveRuleMockitoTest {
   @Test
   public void testPassed() {
     Assertions.assertThat( sensitiveRule.verify("abcd1234")).isTrue();
+    Assertions.assertThat( sensitiveRule.verify("1234abcd")).isTrue();
+    Assertions.assertThat( sensitiveRule.verify("abc123abc")).isTrue();
   }
 
   @Test
