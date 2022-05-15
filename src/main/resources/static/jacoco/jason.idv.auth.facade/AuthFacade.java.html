@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AuthFacade.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">auth</a> &gt; <a href="index.source.html" class="el_package">jason.idv.auth.facade</a> &gt; <span class="el_source">AuthFacade.java</span></div><h1>AuthFacade.java</h1><pre class="source lang-java linenums">package jason.idv.auth.facade;
+
+import jason.idv.auth.constant.PasswordConstant;
+import jason.idv.auth.entity.PasswordResult;
+import jason.idv.auth.entity.PasswordRule;
+import jason.idv.auth.entity.rule.DuplicatedRule;
+import jason.idv.auth.entity.rule.LengthRule;
+import jason.idv.auth.entity.rule.SensitiveRule;
+import jason.idv.auth.service.PasswordServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+<span class="fc" id="L14">public class AuthFacade {</span>
+
+  @Autowired private PasswordServiceImpl passwordService;
+
+  public PasswordResult verifyPassword(String password) {
+<span class="fc" id="L19">    PasswordRule passwordRule =</span>
+        new PasswordRule.Builder()
+<span class="fc" id="L21">            .add(new SensitiveRule(PasswordConstant.SENSITIVE_FAILED))</span>
+<span class="fc" id="L22">            .add(new LengthRule(PasswordConstant.LENGTH_FAILED))</span>
+<span class="fc" id="L23">            .add(new DuplicatedRule(PasswordConstant.DUPLICATED_FAILED))</span>
+<span class="fc" id="L24">            .build();</span>
+<span class="fc" id="L25">    return passwordService.verify(password, passwordRule);</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

@@ -7,18 +7,19 @@ You can find unit test case and integration test case in test package. and view 
 
 ## Command Line
 
-### Build Docker Image
-
-```shell
-./mvnw package && docker build -t st890670/password-validation .
-```
-
 ### Generate jacoco report
 
 1. execute below command
 
 ```shell
-./mvnw clean && ./mvnw test && ./mvnw jacoco:report
+./mvnw clean && ./mvnw test && ./mvnw jacoco:report && ./mvnw process-resources 
 ```
 
-2. look for report at `./target/site/index.html`
+2. look for report at `/target/site/index.html`
+
+### Build Docker Image
+
+```shell
+./mvnw package && docker build -t password-validation .
+```
+

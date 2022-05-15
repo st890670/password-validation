@@ -1,0 +1,13 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+auth,jason.idv.auth.facade,AuthFacade,0,29,0,0,0,7,0,2,0,2
+auth,jason.idv.auth.entity,PasswordResult,0,26,0,0,0,8,0,6,0,6
+auth,jason.idv.auth.entity,PasswordRule.Builder,0,21,0,0,0,5,0,3,0,3
+auth,jason.idv.auth.entity,PasswordRule,0,13,0,0,0,5,0,3,0,3
+auth,jason.idv.auth.entity.rule,DuplicatedRule,0,35,0,4,0,9,0,4,0,2
+auth,jason.idv.auth.entity.rule,LengthRule,0,10,0,0,0,3,0,2,0,2
+auth,jason.idv.auth.entity.rule,SensitiveRule,0,10,0,0,0,3,0,2,0,2
+auth,jason.idv.auth.entity.rule,Rule,0,9,0,0,0,4,0,2,0,2
+auth,jason.idv.auth.config,SpringFoxConfig,0,22,0,0,0,7,0,2,0,2
+auth,jason.idv.auth.service,PasswordServiceImpl,0,30,0,2,0,7,0,4,0,3
+auth,jason.idv.auth.controller,AuthController,0,8,0,0,0,2,0,2,0,2
+auth,jason.idv.auth,AuthApplication,0,8,0,0,0,3,0,2,0,2
