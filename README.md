@@ -5,6 +5,15 @@ It's a password validation side project. You can test API on Swagger UI page. Af
 
 You can find unit test case and integration test case in test package. and view testing coverage statistic by Jacoco.
 
+---
+
+## Demo
+
+- [Swagger UI](http://jasonjiang.info/password-validation/swagger-ui/)
+- [Jacoco Report](http://jasonjiang.info/password-validation/jacoco/index.html)
+
+---
+
 ## Command Line
 
 ### Generate jacoco report
@@ -12,7 +21,7 @@ You can find unit test case and integration test case in test package. and view 
 1. execute below command
 
 ```shell
-./mvnw clean && ./mvnw test && ./mvnw jacoco:report && ./mvnw process-resources 
+./mvnw test && ./mvnw jacoco:report && ./mvnw process-resources 
 ```
 
 2. look for report at `/target/site/index.html`
@@ -23,3 +32,8 @@ You can find unit test case and integration test case in test package. and view 
 ./mvnw package && docker build -t password-validation .
 ```
 
+### Run Docker Container
+
+```shell
+docker run -p 8888:8888 password-validation
+```
