@@ -1,7 +1,8 @@
-package jason.idv.auth.facades;
+package jason.idv.auth.facade;
 
-import jason.idv.auth.entity.PasswordCondition;
-import jason.idv.auth.services.PasswordServiceImpl;
+import jason.idv.auth.entity.PasswordResult;
+import jason.idv.auth.entity.PasswordRule;
+import jason.idv.auth.service.PasswordServiceImpl;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,7 +11,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.mockito.Answers.RETURNS_SELF;
+import java.util.List;
+
+import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -20,20 +23,17 @@ public class AuthFacadeMockitoTest {
 
   @Mock private PasswordServiceImpl passwordService;
 
-  @Mock(answer = RETURNS_SELF)
-  private PasswordCondition.Builder passwordConditionBuilder;
-
   @InjectMocks private AuthFacade authFacade;
 
   @BeforeEach
-  void setUp() {
-    when(passwordService.verify(PASSWORD, passwordConditionBuilder.build()))
-        .thenReturn(true);
+  void setup() {
+    when(passwordService.verify(anyString(), any(PasswordRule.class)))
+        .thenReturn(new PasswordResult(true, List.of()));
   }
 
   @Test
   public void shouldReturnTrue() {
-    boolean result = authFacade.verifyPassword(PASSWORD);
-    Assertions.assertThat(result).isTrue();
+    PasswordResult result = authFacade.verifyPassword(PASSWORD);
+    Assertions.assertThat(result).isExactlyInstanceOf(PasswordResult.class);
   }
 }
