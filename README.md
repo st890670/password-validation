@@ -9,7 +9,7 @@ You can find unit test case and integration test case in test package. and view 
 
 ## Demo
 
-- [Swagger UI](http://jasonjiang.info/password-validation/swagger-ui/)
+- [Swagger UI](https://jasonjiang.info/password-validation/swagger-ui/#/)
 - [Jacoco Report](http://jasonjiang.info/password-validation/jacoco/index.html)
 
 ---
